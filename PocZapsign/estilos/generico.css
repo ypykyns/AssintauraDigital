@@ -1,0 +1,51 @@
+﻿#divLoadingFitBank {
+    position: fixed;
+    background: rgba(0,0,0,.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 0 0 10000px rgba(0,0,0,.5)
+}
+
+    #divLoadingFitBank img {
+        width: 120px;
+        webkit-animation: rotate 4s linear infinite;
+        animation: rotate 4s linear infinite;
+    }
+
+    #divLoadingFitBank i {
+        font-size: 36px;
+    }
+
+    #divLoadingFitBank .divMensagemLoadingFitBank {
+        margin-top: 20%;
+    }
+
+    #divLoadingFitBank span {
+        font: 16px Verdana;
+        font-weight: bold;
+    }
+
+    #divLoadingFitBank i {
+        font-size: 36px
+    }
+
+    #divLoadingFitBank .divMensagemLoadingFitBank {
+        margin-top: 20%
+    }
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

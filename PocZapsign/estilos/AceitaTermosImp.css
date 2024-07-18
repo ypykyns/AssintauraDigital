@@ -1,0 +1,17 @@
+﻿.a4 {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 10mm auto;
+    border: 1px solid #d3d3d3;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+@media print {
+    .a4 {
+        box-shadow: none;
+        margin: 0;
+        border: none;
+    }
+}
