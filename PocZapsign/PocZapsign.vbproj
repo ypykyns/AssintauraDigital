@@ -467,6 +467,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Modulos\CadPessoa.aspx" />
+    <Content Include="Modulos\TermosEnviados.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\generico.js" />
@@ -550,6 +551,13 @@
     <Compile Include="Modulos\CadPessoa.aspx.vb">
       <DependentUpon>CadPessoa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\TermosEnviados.aspx.designer.vb">
+      <DependentUpon>TermosEnviados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\TermosEnviados.aspx.vb">
+      <DependentUpon>TermosEnviados.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

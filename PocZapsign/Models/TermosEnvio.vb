@@ -4,4 +4,6 @@
     Public Property DATAENVIO As DateTime?
     Public Property STATUS As Char?
     Public Property DATARETORNO As DateTime?
+    Public Property TERMO As String
+
 End Class

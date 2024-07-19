@@ -55,4 +55,24 @@ Public Class BLZapsign
         End Using
     End Function
 
+    Public Function SendGetRequest(docToken As String) As String
+        Dim requestUrl As String = $"{apiUrl}{docToken}?api_token={apiToken}"
+
+        Dim request As HttpWebRequest = CType(WebRequest.Create(requestUrl), HttpWebRequest)
+        request.Method = "GET"
+
+        Dim response As WebResponse = request.GetResponse()
+        Using responseStream As Stream = response.GetResponseStream()
+            Using reader As New StreamReader(responseStream)
+                Dim responseData As String = reader.ReadToEnd()
+                Console.WriteLine(responseData)
+                Return responseData
+            End Using
+        End Using
+
+        Console.WriteLine(response.ToString)
+
+        Return ""
+    End Function
+
 End Class

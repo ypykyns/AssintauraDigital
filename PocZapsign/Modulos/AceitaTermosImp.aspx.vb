@@ -67,7 +67,8 @@ Public Class AceitaTermosImp
             .NUM = pessoaId,
             .TOKEN = objRetorno.token,
             .DATAENVIO = Date.Now,
-            .STATUS = Convert.ToString(PocZapsign.TermoEnvio.StatusTermoEnvio.ENVIADO)
+            .STATUS = Convert.ToString(PocZapsign.TermoEnvio.StatusTermoEnvio.ENVIADO),
+            .TERMO = objRetorno.original_file
         }
 
         objBLTermosEnvio.Incluir(objTermosEnvio)

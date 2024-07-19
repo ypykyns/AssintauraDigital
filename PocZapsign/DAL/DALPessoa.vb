@@ -15,6 +15,19 @@ Public Class DALPessoa
         Return dt
     End Function
 
+    Public Function ListarPessoasDropDownEnviados() As DataTable
+        Dim dt As New DataTable()
+        Using conn As New SqlConnection(connectionString)
+            'aqui só vai trazer os integrantes com termo enviado, e que o status seja 0('não assinado ainda')
+            Dim cmd As New SqlCommand("SELECT i.NUM, i.NOME FROM Integrantes i INNER JOIN TermosEnvio te ON i.NUM = te.NUM WHERE te.Status = 0;", conn)
+            conn.Open()
+            Using reader As SqlDataReader = cmd.ExecuteReader()
+                dt.Load(reader)
+            End Using
+        End Using
+        Return dt
+    End Function
+
     Public Function Obter(ByVal Id As Integer) As Pessoa
         Dim pessoa As New Pessoa()
         Dim query As String = "SELECT * FROM Integrantes WHERE NUM=@ID"

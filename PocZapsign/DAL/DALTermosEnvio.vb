@@ -52,12 +52,13 @@ Public Class DALTermosEnvio
 
     Public Sub Incluir(termosEnvio As TermosEnvio)
         Using conn As New SqlConnection(connectionString)
-            Dim cmd As New SqlCommand("INSERT INTO TermosEnvio (TOKEN, DATAENVIO, STATUS, DATARETORNO, NUM) VALUES (@TOKEN, @DATA_ENVIO, @STATUS, @DATA_RETORNO, @PESSOA_ID)", conn)
+            Dim cmd As New SqlCommand("INSERT INTO TermosEnvio (TOKEN, DATAENVIO, STATUS, DATARETORNO, NUM, TERMO) VALUES (@TOKEN, @DATA_ENVIO, @STATUS, @DATA_RETORNO, @PESSOA_ID, @TERMO)", conn)
             cmd.Parameters.AddWithValue("@PESSOA_ID", termosEnvio.NUM)
             cmd.Parameters.AddWithValue("@TOKEN", termosEnvio.TOKEN)
             cmd.Parameters.AddWithValue("@DATA_ENVIO", If(termosEnvio.DATAENVIO Is Nothing, DBNull.Value, termosEnvio.DATAENVIO))
             cmd.Parameters.AddWithValue("@STATUS", termosEnvio.STATUS)
             cmd.Parameters.AddWithValue("@DATA_RETORNO", If(termosEnvio.DATARETORNO Is Nothing, DBNull.Value, termosEnvio.DATARETORNO))
+            cmd.Parameters.AddWithValue("@TERMO", If(termosEnvio.TERMO Is Nothing, "", termosEnvio.TERMO))
             conn.Open()
             cmd.ExecuteNonQuery()
         End Using
