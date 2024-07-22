@@ -4,13 +4,14 @@ Imports System.Diagnostics.Eventing.Reader
 Imports System.IO
 Imports System.Net
 Imports System.Data.SqlClient
+Imports PocZapsign.Utils
 
 Public Class TermosEnviados
     Inherits System.Web.UI.Page
     Dim objBLPessoa As PocZapsign.BLPessoa
     Dim objBLTermoEnviado As PocZapsign.BLTermos
     Private ReadOnly connectionString As String = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
-
+    Dim utils As New Utils
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -60,7 +61,7 @@ Public Class TermosEnviados
             End If
 
             If consultaTermo.signers IsNot Nothing AndAlso consultaTermo.signers.Count > 0 Then
-                objTermo.DATAASSINATURA = consultaTermo.signers(0).signed_at
+                objTermo.DATAASSINATURA = utils.ConvertDateTime(consultaTermo.signers(0).signed_at)
             Else
                 objTermo.DATAASSINATURA = Nothing
             End If

@@ -28,8 +28,9 @@ Public Class BLZapsign
                 .auth_mode = "assinaturaTela",
                 .send_automatic_email = True,
                 .send_automatic_whatsapp = False,
-                .require_selfie_photo = True
-            }
+                .require_selfie_photo = True,
+                .require_document_photo = True
+        }
         }
     }
 
