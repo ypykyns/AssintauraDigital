@@ -466,7 +466,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Modulos\CadPessoa.aspx" />
     <Content Include="Modulos\TermosEnviados.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -506,12 +505,13 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\WebApiConfig.vb" />
-    <Compile Include="BL\BLTermosEnvio.vb" />
+    <Compile Include="BL\BLTermos.vb" />
     <Compile Include="BL\BLDocAssinado.vb" />
     <Compile Include="BL\BLPessoa.vb" />
     <Compile Include="BL\BLZapsign.vb" />
     <Compile Include="Controllers\ZapsingController.vb" />
     <Compile Include="Enum\TermoEnvio.vb" />
+    <Compile Include="Models\Zapsign\ConsultaTermo.vb" />
     <Compile Include="Models\Zapsign\RetornoAssinatura.vb" />
     <Compile Include="Models\Zapsign\WebhookAssinado.vb" />
     <Compile Include="Models\Zapsign\WebhookCreado.vb" />
@@ -530,7 +530,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DAL\DALAssinado.vb" />
-    <Compile Include="DAL\DALTermosEnvio.vb" />
+    <Compile Include="DAL\DALTermos.vb" />
     <Compile Include="DAL\DALPessoa.vb" />
     <Compile Include="Default.aspx.vb">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -545,13 +545,6 @@
     <Compile Include="Models\Termos.vb" />
     <Compile Include="Models\TermosEnvio.vb" />
     <Compile Include="Models\Pessoa.vb" />
-    <Compile Include="Modulos\CadPessoa.aspx.designer.vb">
-      <DependentUpon>CadPessoa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\CadPessoa.aspx.vb">
-      <DependentUpon>CadPessoa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Modulos\TermosEnviados.aspx.designer.vb">
       <DependentUpon>TermosEnviados.aspx</DependentUpon>
     </Compile>

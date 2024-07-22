@@ -19,7 +19,7 @@ Public Class DALPessoa
         Dim dt As New DataTable()
         Using conn As New SqlConnection(connectionString)
             'aqui só vai trazer os integrantes com termo enviado, e que o status seja 0('não assinado ainda')
-            Dim cmd As New SqlCommand("SELECT i.NUM, i.NOME FROM Integrantes i INNER JOIN TermosEnvio te ON i.NUM = te.NUM WHERE te.Status = 0;", conn)
+            Dim cmd As New SqlCommand("SELECT i.NUM, i.NOME FROM Integrantes i INNER JOIN Termos te ON i.NUM = te.NUM ", conn)
             conn.Open()
             Using reader As SqlDataReader = cmd.ExecuteReader()
                 dt.Load(reader)

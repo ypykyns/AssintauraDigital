@@ -1,6 +1,6 @@
 ﻿'------------------------------------------------------------------------------
 ' <gerado automaticamente>
-'     Este código foi gerado por uma ferramenta.
+'     Esse código foi gerado por uma ferramenta.
 '
 '     As alterações ao arquivo poderão causar comportamento incorreto e serão perdidas se
 '     o código for recriado
@@ -18,7 +18,7 @@ Partial Public Class SiteMaster
     '''</summary>
     '''<remarks>
     '''Campo gerado automaticamente.
-    '''Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+    '''Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
     '''</remarks>
     Protected WithEvents MainContent As Global.System.Web.UI.WebControls.ContentPlaceHolder
 End Class

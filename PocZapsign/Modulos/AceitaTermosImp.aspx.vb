@@ -6,6 +6,7 @@ Imports Newtonsoft.Json
 Imports PocZapsign.TermoEnvio
 Imports PocZapsign.BLPessoa
 Imports PocZapsign
+Imports System.Net
 
 Public Class AceitaTermosImp
     Inherits System.Web.UI.Page
@@ -46,14 +47,13 @@ Public Class AceitaTermosImp
         telefone.Text = objPessoa.TelCel
         endereco.Text = objPessoa.Endereco & ", número: " & objPessoa.Numero & ", complemento: " & objPessoa.Complemento & ", bairro: " & objPessoa.Bairro & ", cidade: " & objPessoa.Cidade & ", UF.: " & objPessoa.UF & ", CEP.: " & objPessoa.CEP
 
-        'BtnEnviarAssinatura.Attributes.Add("OnClick", "EnviarAssinaturaDigital(); return false;")
     End Sub
 
     Protected Sub BtnEnviarAssinatura_Click(sender As Object, e As EventArgs) Handles BtnEnviarAssinatura.Click
         Dim base64 = ExportarPDF()
 
         Dim objBLZap As New BLZapsign
-        Dim objBLTermosEnvio As New BLTermosEnvio
+        Dim objBLTermo As New BLTermos
         objBLPessoa = New BLPessoa
 
         Dim pessoaId As String = UCase(Request("id"))
@@ -63,15 +63,15 @@ Public Class AceitaTermosImp
         Dim retorno = objBLZap.SendPostRequest(objPessoa, base64)
 
         Dim objRetorno As RetornoAssinatura = JsonConvert.DeserializeObject(Of RetornoAssinatura)(retorno)
-        Dim objTermosEnvio As New TermosEnvio With {
+        Dim objTermo As New Termos With {
             .NUM = pessoaId,
             .TOKEN = objRetorno.token,
             .DATAENVIO = Date.Now,
-            .STATUS = Convert.ToString(PocZapsign.TermoEnvio.StatusTermoEnvio.ENVIADO),
-            .TERMO = objRetorno.original_file
-        }
+            .TERMOLINKEMBRANCO = objRetorno.original_file,
+            .TERMOENVIADO = DownloadPdf(objRetorno.original_file)
+            }
 
-        objBLTermosEnvio.Incluir(objTermosEnvio)
+        objBLTermo.Incluir(objTermo)
 
         Response.Redirect("CriarAssinatura.aspx")
     End Sub
@@ -113,7 +113,7 @@ Public Class AceitaTermosImp
     Public Sub EnviarAssinatura(ByVal pessoaId As String, ByVal base64 As String)
 
         Dim objBLZap As New BLZapsign
-        Dim objBLTermosEnvio As New BLTermosEnvio
+        Dim objBLTermosEnvio As New BLTermos
         objBLPessoa = New BLPessoa
         Dim decPessoaId = Convert.ToDecimal(pessoaId)
         Dim objPessoa = objBLPessoa.Obter(Convert.ToDecimal(decPessoaId))
@@ -121,17 +121,37 @@ Public Class AceitaTermosImp
         Dim retorno = objBLZap.SendPostRequest(objPessoa, base64)
 
         Dim objRetorno As RetornoAssinatura = JsonConvert.DeserializeObject(Of RetornoAssinatura)(retorno)
-        Dim objTermosEnvio As New TermosEnvio With {
-           .NUM = pessoaId,
+        Dim objTermosEnvio As New Termos With {
+            .NUM = pessoaId,
             .TOKEN = objRetorno.token,
             .DATAENVIO = Date.Now,
-            .STATUS = Convert.ToString(PocZapsign.TermoEnvio.StatusTermoEnvio.ENVIADO)
+            .TERMOENVIADO = DownloadPdf(objRetorno.original_file)
         }
+
 
         objBLTermosEnvio.Incluir(objTermosEnvio)
 
         Response.Redirect("CriarAssinatura.aspx")
     End Sub
+
+    Function ConvertPdfToBase64(pdfUrl As String) As String
+        ' Baixar o PDF
+        Dim pdfData As Byte() = DownloadPdf(pdfUrl)
+        ' Converter o PDF para base64
+        Return Convert.ToBase64String(pdfData)
+    End Function
+
+    Function DownloadPdf(pdfUrl As String) As Byte()
+        Try
+            Using client As New WebClient()
+                Return client.DownloadData(pdfUrl)
+            End Using
+        Catch ex As Exception
+            ' Log do erro para depuração
+            Console.WriteLine("Erro ao baixar o PDF: " & ex.Message)
+            Return Nothing
+        End Try
+    End Function
 
 
 End Class
