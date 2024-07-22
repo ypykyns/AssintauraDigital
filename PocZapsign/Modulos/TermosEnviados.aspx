@@ -25,7 +25,7 @@
                 // Oculta os botões
                 document.getElementById("btnTermoEnviado").style.display = "none";
                 document.getElementById("btnTermoAssinado").style.display = "none";
-              
+
             });
         }
 
@@ -47,10 +47,17 @@
             </div>
 
             <div align="left">
-                <asp:Button ID="BtnConsultarTermoEnviado" runat="server" OnClientClick="return verificaTermoSelecionado();" Text="Consultar Termo" Width="196px" CssClass="btn btn-primary" />
+                <asp:Button
+                    ID="BtnConsultarTermoEnviado"
+                    runat="server"
+                    OnClientClick="showLoader(); return verificaTermoSelecionado();"
+                    OnClick="BtnConsultarTermoEnviado_Click"
+                    Text="Consultar Termo"
+                    Width="196px"
+                    CssClass="btn btn-primary" />
                 <!-- Botões Ocultos -->
-                <asp:Button ID="btnTermoEnviado" runat="server" Text="Baixar Termo Original" Width="196px" CssClass="btn btn-primary" style="display: none;" />
-                <asp:Button ID="btnTermoAssinado" runat="server" Text="Baixar Termo Assinado" Width="196px" CssClass="btn btn-primary" style="display: none;" />
+                <asp:Button ID="btnTermoEnviado" runat="server"  Text="Baixar Termo Original" Width="196px" CssClass="btn btn-primary" Style="display: none;" />
+                <asp:Button ID="btnTermoAssinado" runat="server"  Text="Baixar Termo Assinado" Width="196px" CssClass="btn btn-primary" Style="display: none;" />
             </div>
         </div>
     </form>

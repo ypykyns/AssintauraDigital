@@ -87,22 +87,17 @@
                         <asp:Label ID="data" runat="server"></asp:Label>
                     </div>
                     <br />
+                    <br />
                     <div id="assinaturaPrincipal" style="text-align: center; margin: 20px auto;">
                         ______________________________________________    
                         <br />
-                        Assinatura, Igual ao Documento de Identidade Anexado          
+                        Documento assinado digitalmente por:         
                         <br />
                         Nome:<asp:Label ID="nome1" runat="server"></asp:Label>
                         Cpf:
                         <asp:Label ID="cpf1" runat="server"></asp:Label>
                     </div>
-                    <br />
-                    Testemunha:
-                    <br />
-                    Assinatura&nbsp; :______________________________ Nome Completo(Legível): ___________________________________<br />
-                    <br />
-                    CPF: ___________________ N. no Sistema: ____________ Cargo/Divisão: ____________________________________<br />
-                </font>
+                    <br />                   
             </div>
         </asp:Panel>
         <br />

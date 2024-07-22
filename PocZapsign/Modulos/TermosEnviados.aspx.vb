@@ -191,6 +191,7 @@ Public Class TermosEnviados
 
 
         DownloadPdfTermoAssinado(DdlPessoas.SelectedValue)
+
         ' Redireciona para a mesma página para forçar um refresh
         Response.Redirect(Request.RawUrl)
     End Sub
@@ -203,6 +204,7 @@ Public Class TermosEnviados
         End If
 
         DownloadPdfTermoEnviado(DdlPessoas.SelectedValue)
+
         ' Redireciona para a mesma página para forçar um refresh
         Response.Redirect(Request.RawUrl)
     End Sub
